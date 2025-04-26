@@ -8,8 +8,8 @@
 <body>
 <%- include('partials/nav') %>
 <h2>Lista zakończonych przetargów</h2>
-<table>
-    <thead>
+<table class="table table-striped">
+    <thead class="table-dark">
     <tr>
         <th>#</th>
         <th>Nazwa</th>
@@ -19,7 +19,7 @@
     <tbody>
     <% if (tenders.length === 0) { %>
         <tr>
-            <td colspan="3">Brak zakończonych przetargów</td>
+            <td colspan="3" class="text-center">Brak zakończonych przetargów</td>
         </tr>
     <% } else { %>
         <% tenders.forEach((t, i) => { %>
