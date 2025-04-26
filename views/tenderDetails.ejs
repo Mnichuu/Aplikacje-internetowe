@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title><%= tender.title %> - Szczegóły</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+<%- include('partials/nav') %>
+
+<h2><%= tender.title %></h2>
+<p><strong>Instytucja zamawiająca:</strong> <%= tender.institution %></p>
+<p><strong>Opis:</strong> <%= tender.description %></p>
+<p><strong>Rozpoczęcie:</strong> <%= new Date(tender.start_time).toLocaleString() %></p>
+<p><strong>Zakończenie:</strong> <%= new Date(tender.deadline).toLocaleString() %></p>
+
+<%
+const now = new Date();
+const start = new Date(tender.start_time);
+const end = new Date(tender.deadline);
+const isActive = now >= start && now <= end;
+%>
+
+<% if (isActive) { %>
+    <h3>Złóż ofertę</h3>
+    <form action="/tenders/<%= tender.id %>/bid" method="POST">
+        <label>Twoja nazwa:</label><br>
+        <input type="text" name="bidder_name" required><br><br>
+
+        <label>Wartość oferty (PLN):</label><br>
+        <input type="number" name="value" step="0.01" required><br><br>
+
+        <button type="submit">Złóż ofertę</button>
+    </form>
+<% } else { %>
+    <p><em>Przetarg nie jest aktywny - nie można składać ofert.</em></p>
+<% } %>
+
+<% if (bids.length > 0) { %>
+    <h3>Złożone oferty:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Lp.</th>
+            <th>Nazwa oferenta</th>
+            <th>Wartość (PLN)</th>
+            <th>Data i godzina złożenia</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% bids.forEach((bid, index) => { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= bid.bidder_name %></td>
+                <td><%= bid.value %></td>
+                <td><%= new Date(bid.submission_time).toLocaleString() %></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+<% } %>
+</body>
+</html>

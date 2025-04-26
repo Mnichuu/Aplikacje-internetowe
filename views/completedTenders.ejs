@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zakończonych przetargów</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+<%- include('partials/nav') %>
+<h2>Lista zakończonych przetargów</h2>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Nazwa</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (tenders.length === 0) { %>
+        <tr>
+            <td colspan="3">Brak zakończonych przetargów</td>
+        </tr>
+    <% } else { %>
+        <% tenders.forEach((t, i) => { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><a href="/tenders/<%= t.id %>"> <%= t.title %> </a></td>
+                <td>Zakończony</td>
+            </tr>
+        <% }) %>
+    <% } %>
+    </tbody>
+</table>
+</body>
+</html>

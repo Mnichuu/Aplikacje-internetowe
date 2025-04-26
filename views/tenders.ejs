@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista przetargów</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+<%- include('partials/nav') %>
+<h2>Lista aktualnych przetargów</h2>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Nazwa</th>
+        <th>Rozpoczęcie</th>
+        <th>Zakończenie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% tenders.forEach((t, i) => { %>
+        <tr>
+            <td><%= i + 1 %></td>
+            <td><a href="/tenders/<%= t.id %>"> <%= t.title %> </a></td>
+            <td><%= t.start_time %></td>
+            <td><%= t.deadline %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+</body>
+</html>
