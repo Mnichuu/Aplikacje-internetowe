@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+<row>
+  <id>11</id>
+  <tender_id>13</tender_id>
+  <bidder_name>Testowa firma</bidder_name>
+  <value>700000.00</value>
+  <submission_time>2025-04-26 12:04:30</submission_time>
+</row>
+<row>
+  <id>12</id>
+  <tender_id>13</tender_id>
+  <bidder_name>Testowa firma 2</bidder_name>
+  <value>1.00</value>
+  <submission_time>2025-04-26 12:04:43</submission_time>
+</row>
+</data>

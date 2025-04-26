@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+<row>
+  <id>8</id>
+  <title>Remont dachu budynku szkoły</title>
+  <description>Remont pokrycia dachowego budynku szkoły podstawowej nr 15 w Poznaniu</description>
+  <institution>Urząd Miasta Poznań</institution>
+  <start_time>2025-05-01 08:00:00</start_time>
+  <deadline>2025-05-10 08:00:00</deadline>
+  <max_budget>150000.00</max_budget>
+</row>
+<row>
+  <id>9</id>
+  <title>Dostawa komputerów dla urzędu</title>
+  <description>Zakup i dostarczenie 50 zestawów komputerowych wraz z monitorami</description>
+  <institution>Starostwo Powiatowe w Gdańsku</institution>
+  <start_time>2025-05-02 09:00:00</start_time>
+  <deadline>2025-05-12 15:00:00</deadline>
+  <max_budget>250000.00</max_budget>
+</row>
+<row>
+  <id>10</id>
+  <title>Sprzątanie budynków użyteczności publicznej</title>
+  <description>Świadczenie usług sprzątania w budynkach urzędu gminy</description>
+  <institution>Gmina Kraków</institution>
+  <start_time>2025-04-28 07:00:00</start_time>
+  <deadline>2025-05-05 17:01:00</deadline>
+  <max_budget>80000.00</max_budget>
+</row>
+<row>
+  <id>11</id>
+  <title>Budowa placu zabaw</title>
+  <description>Projekt i budowa placu zabaw przy szkole podstawowej w Zakopanem</description>
+  <institution>Gmina Zakopane</institution>
+  <start_time>2025-05-03 10:02:00</start_time>
+  <deadline>2025-05-15 14:00:00</deadline>
+  <max_budget>120000.00</max_budget>
+</row>
+<row>
+  <id>12</id>
+  <title>Modernizacja oświetlenia ulicznego</title>
+  <description>Wymiana opraw oświetleniowych na energooszczędne LED w wybranych dzielnicach</description>
+  <institution>Urząd Miasta Wrocław</institution>
+  <start_time>2025-04-30 09:30:00</start_time>
+  <deadline>2025-05-09 17:30:00</deadline>
+  <max_budget>300000.00</max_budget>
+</row>
+<row>
+  <id>13</id>
+  <title>TEST PRZETARGU</title>
+  <description>Testowy opis</description>
+  <institution>Testowa Instytucja</institution>
+  <start_time>2025-04-08 12:04:00</start_time>
+  <deadline>2025-06-25 12:04:00</deadline>
+  <max_budget>500000.00</max_budget>
+</row>
+</data>
