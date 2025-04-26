@@ -11,5 +11,5 @@ router.post('/add', tenderController.addTender);
 router.get('/tenders/:id', tenderController.showTenderDetails);
 router.post('/tenders/:id/bid', tenderController.submitBid);
 
-router.get('/tenders/completed', tenderController.listCompleted);
+router.get('/completed', tenderController.listCompleted);
 module.exports = router;
