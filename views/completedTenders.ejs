@@ -7,30 +7,35 @@
 </head>
 <body>
 <%- include('partials/nav') %>
-<h2>Lista zakończonych przetargów</h2>
-<table class="table table-striped">
-    <thead class="table-dark">
-    <tr>
-        <th>#</th>
-        <th>Nazwa</th>
-        <th>Status</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="container mt-5">
+    <h2 class="text-center">Lista zakończonych przetargów</h2>
     <% if (tenders.length === 0) { %>
-        <tr>
-            <td colspan="3" class="text-center">Brak zakończonych przetargów</td>
-        </tr>
+        <div class="alert alert-info text-center mt-4" role="alert">
+            Brak zakończonych przetargów.
+        </div>
     <% } else { %>
-        <% tenders.forEach((t, i) => { %>
+        <table class="table table-striped mt-4">
+            <thead class="table-dark">
             <tr>
-                <td><%= i + 1 %></td>
-                <td><a href="/tenders/<%= t.id %>"> <%= t.title %> </a></td>
-                <td>Zakończony</td>
+                <th>#</th>
+                <th>Nazwa</th>
+                <th>Status</th>
+                <th>Akcja</th>
             </tr>
-        <% }) %>
+            </thead>
+            <tbody>
+            <% tenders.forEach((t, i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><a href="/tenders/<%= t.id %>"><%= t.title %></a></td>
+                    <td>Zakończony</td>
+                    <td><a href="/tenders/<%= t.id %>" class="btn btn-primary btn-sm">Szczegóły</a></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
     <% } %>
-    </tbody>
-</table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

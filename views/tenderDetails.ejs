@@ -7,57 +7,66 @@
 </head>
 <body>
 <%- include('partials/nav') %>
-
-<h2><%= tender.title %></h2>
-<p><strong>Instytucja zamawiająca:</strong> <%= tender.institution %></p>
-<p><strong>Opis:</strong> <%= tender.description %></p>
-<p><strong>Rozpoczęcie:</strong> <%= new Date(tender.start_time).toLocaleString() %></p>
-<p><strong>Zakończenie:</strong> <%= new Date(tender.deadline).toLocaleString() %></p>
-
-<%
-const now = new Date();
-const start = new Date(tender.start_time);
-const end = new Date(tender.deadline);
-const isActive = now >= start && now <= end;
-%>
-
-<% if (isActive) { %>
-    <h3>Złóż ofertę</h3>
-    <form action="/tenders/<%= tender.id %>/bid" method="POST">
-        <label>Twoja nazwa:</label><br>
-        <input type="text" name="bidder_name" required><br><br>
-
-        <label>Wartość oferty (PLN):</label><br>
-        <input type="number" name="value" step="0.01" required><br><br>
-
-        <button type="submit">Złóż ofertę</button>
-    </form>
-<% } else { %>
-    <p><em>Przetarg nie jest aktywny - nie można składać ofert.</em></p>
-<% } %>
-
-<% if (bids.length > 0) { %>
-    <h3>Złożone oferty:</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Lp.</th>
-            <th>Nazwa oferenta</th>
-            <th>Wartość (PLN)</th>
-            <th>Data i godzina złożenia</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% bids.forEach((bid, index) => { %>
+<div class="container mt-5">
+    <h2 class="text-center"><%= tender.title %></h2>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Instytucja zamawiająca</h5>
+            <p class="card-text"><%= tender.institution %></p>
+            <h5 class="card-title">Opis</h5>
+            <p class="card-text"><%= tender.description %></p>
+            <h5 class="card-title">Czas trwania</h5>
+            <p class="card-text">Od: <%= new Date(tender.start_time).toLocaleString() %></p>
+            <p class="card-text">Do: <%= new Date(tender.deadline).toLocaleString() %></p>
+        </div>
+    </div>
+    <h3 class="mt-5">Złożone oferty</h3>
+    <% if (bids.length === 0) { %>
+        <p class="text-muted">Brak ofert dla tego przetargu.</p>
+    <% } else { %>
+        <table class="table table-striped">
+            <thead class="table-dark">
             <tr>
-                <td><%= index + 1 %></td>
-                <td><%= bid.bidder_name %></td>
-                <td><%= bid.value %></td>
-                <td><%= new Date(bid.submission_time).toLocaleString() %></td>
+                <th>#</th>
+                <th>Nazwa oferenta</th>
+                <th>Wartość (PLN)</th>
+                <th>Data złożenia</th>
             </tr>
-        <% }) %>
-        </tbody>
-    </table>
-<% } %>
+            </thead>
+            <tbody>
+            <% bids.forEach((bid, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= bid.bidder_name %></td>
+                    <td><%= bid.value %></td>
+                    <td><%= new Date(bid.submission_time).toLocaleString() %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+    <% if (new Date() >= new Date(tender.start_time) && new Date() <= new Date(tender.deadline)) { %>
+        <div class="mt-4">
+            <h3>Złóż ofertę</h3>
+            <form action="/tenders/<%= tender.id %>/bid" method="POST">
+                <div class="mb-3">
+                    <label for="bidder_name" class="form-label">Nazwa składającego ofertę</label>
+                    <input type="text" class="form-control" id="bidder_name" name="bidder_name" placeholder="Wprowadź swoją nazwę" required>
+                </div>
+                <div class="mb-3">
+                    <label for="value" class="form-label">Wartość oferty (PLN)</label>
+                    <input type="number" class="form-control" id="value" name="value" placeholder="Wprowadź wartość oferty" required>
+                </div>
+                <button type="submit" class="btn btn-success">Złóż ofertę</button>
+            </form>
+        </div>
+    <% } else { %>
+        <div class="alert alert-warning mt-4" role="alert">
+            Przetarg jest nieaktywny. Nie można złożyć oferty.
+        </div>
+    <% } %>
+    <a href="/tenders" class="btn btn-primary mt-3">Powrót do listy przetargów</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

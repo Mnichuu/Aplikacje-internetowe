@@ -7,6 +7,9 @@ const port = 3000;
 // Łączenie z bazą danych
 const db = require('./db/connection');
 
+// Serwowanie plików statycznych
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Ustawienia widoków
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
