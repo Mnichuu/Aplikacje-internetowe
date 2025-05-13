@@ -14,12 +14,12 @@ Aplikacja internetowa umożliwiająca zarządzanie przetargami, składanie ofert
 
 ## Technologie
 
-- Node.js
-- Express.js
-- NPM 
-- BodyParser
-- Path
-- Baza danych MySQL
+- Node.js - środowisko uruchomieniowe JavaScript
+- Express.js - framework do budowy aplikacji webowych
+- NPM - menedżer pakietów dla Node.js
+- BodyParser - parser do formularzy (bodie)
+- Path - obsługa ścieżek plików
+- Baza danych MySQL - przechpwuje dane o przetargach i ofertach.
 
 ## Struktura
 
